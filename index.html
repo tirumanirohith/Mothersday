@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Mother's Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  background: #1a0a12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'Josefin Sans', sans-serif;
+  position: relative;
+}
+
+/* Starfield background */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 20% 30%, #2d0a22 0%, #1a0a12 50%, #0d0508 100%);
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.4); }
+}
+
+/* Rose petals falling */
+.petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  animation: petalFall linear infinite;
+  opacity: 0;
+}
+
+@keyframes petalFall {
+  0%   { transform: translateY(-80px) rotate(0deg) translateX(0); opacity: 0; }
+  5%   { opacity: 0.7; }
+  95%  { opacity: 0.5; }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(60px); opacity: 0; }
+}
+
+/* ===== CARD ===== */
+.card-scene {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 600px;
+  perspective: 1200px;
+}
+
+.card {
+  background: linear-gradient(160deg, #fff9f5 0%, #fff4f8 60%, #fef0ff 100%);
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,180,150,0.3),
+    0 40px 100px rgba(0,0,0,0.6),
+    0 0 80px rgba(220,80,120,0.2),
+    inset 0 1px 0 rgba(255,255,255,1);
+  animation: cardReveal 1.4s cubic-bezier(.22,.68,0,1.15) both;
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(60px) scale(0.92) rotateX(8deg); }
+  to   { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
+  overflow: hidden;
+}
+
+/* Deep gradient sky in hero */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, #6b0f3a 0%, #a0204e 30%, #c84070 55%, #e87898 80%, #f9c0d0 100%);
+}
+
+/* Glowing orb */
+.hero-orb {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,220,180,0.45) 0%, rgba(255,150,180,0.2) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: orbPulse 4s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50%       { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+
+/* Gold arc lines */
+.arc-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Big rose SVG in hero */
+.hero-rose {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 8px 24px rgba(100,0,40,0.4));
+  animation: roseFloat 5s ease-in-out infinite;
+}
+
+@keyframes roseFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-10px) rotate(2deg); }
+}
+
+.hero-subtitle {
+  position: relative;
+  z-index: 3;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(255,240,240,0.85);
+  margin-bottom: 0.5rem;
+  animation: fadeSlideUp 1.2s 0.3s both;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 3;
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  color: #fff;
+  line-height: 1.1;
+  text-shadow:
+    0 2px 12px rgba(150,30,70,0.5),
+    0 0 40px rgba(255,200,200,0.4);
+  animation: fadeSlideUp 1.2s 0.5s both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Wavy separator */
+.wave-sep {
+  display: block;
+  width: 100%;
+  margin-top: -2px;
+  line-height: 0;
+}
+
+/* ===== BODY ===== */
+.card-body {
+  padding: 2rem 2.5rem 2.5rem;
+  background: linear-gradient(180deg, #fff9f5 0%, #fffafc 100%);
+}
+
+/* Date badge */
+.date-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.8rem;
+}
+
+.date-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e8a0b0, transparent);
+}
+
+.date-text {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #c06080;
+  font-weight: 300;
+}
+
+/* Main message */
+.message-box {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.message-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #6b1a3a;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.message-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: #6a4050;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+/* Qualities — horizontal icons */
+.qualities {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(220,120,150,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.quality-item {
+  flex: 1;
+  padding: 16px 8px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff5f8, #fff0f4);
+  border-right: 1px solid rgba(220,120,150,0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.quality-item:last-child { border-right: none; }
+.quality-item:hover {
+  background: linear-gradient(135deg, #ffe8f0, #ffd8e8);
+  transform: scale(1.04);
+  z-index: 2;
+  position: relative;
+}
+
+.quality-emoji { font-size: 1.6rem; display: block; margin-bottom: 5px; }
+.quality-label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #904060;
+  font-weight: 400;
+}
+
+/* Quote */
+.quote-section {
+  position: relative;
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #fdf0f5, #fce8f2);
+  border-radius: 20px;
+  border: 1px solid rgba(220,100,140,0.15);
+  overflow: hidden;
+}
+
+.quote-section::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  color: rgba(200,80,120,0.12);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #6b1a3a;
+  line-height: 1.9;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.quote-author {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #c06888;
+  font-weight: 300;
+}
+
+/* Photo frame placeholder / decorative frame */
+.deco-frame {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+.deco-card {
+  flex: 1;
+  border-radius: 16px;
+  padding: 18px 14px;
+  text-align: center;
+  border: 1px solid rgba(220,120,150,0.2);
+}
+
+.deco-card.rose-card {
+  background: linear-gradient(135deg, #6b0f3a, #a0204e);
+  color: white;
+}
+
+.deco-card.gold-card {
+  background: linear-gradient(135deg, #3a2800, #7a5800);
+  color: #f9d870;
+}
+
+.deco-card-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+.deco-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.deco-card-sub {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+/* Bottom garland / flowers row */
+.garland {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 1.6rem;
+}
+
+/* Signature */
+.signature {
+  text-align: center;
+  padding-top: 1.4rem;
+  border-top: 1px dashed rgba(200,100,130,0.3);
+}
+
+.sig-love {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #b07080;
+  margin-bottom: 0.4rem;
+  font-weight: 300;
+}
+
+.sig-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  color: #7a1a3a;
+  line-height: 1.2;
+}
+
+.sig-hearts {
+  margin-top: 8px;
+  font-size: 1.2rem;
+  animation: heartsWave 2s ease-in-out infinite;
+}
+
+@keyframes heartsWave {
+  0%, 100% { letter-spacing: 6px; }
+  50% { letter-spacing: 12px; }
+}
+
+/* ===== FOOTER RIBBON ===== */
+.footer-ribbon {
+  height: 10px;
+  background: linear-gradient(90deg,
+    #f7b8c8 0%, #e8547a 20%, #c9953a 40%,
+    #e8547a 60%, #c9b8d8 80%, #f7b8c8 100%);
+  background-size: 300% 100%;
+  animation: ribbonFlow 5s linear infinite;
+}
+
+@keyframes ribbonFlow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Starfield -->
+<div class="starfield" id="starfield"></div>
+
+<!-- Falling petals container -->
+<div id="petals-container" style="position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;"></div>
+
+<div class="card-scene">
+  <div class="card">
+
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-orb"></div>
+
+      <!-- Arc decoration lines SVG -->
+      <svg class="arc-lines" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="arcGold" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="rgba(255,200,100,0)"/>
+            <stop offset="50%" stop-color="rgba(255,200,100,0.4)"/>
+            <stop offset="100%" stop-color="rgba(255,200,100,0)"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="300" cy="-20" rx="200" ry="180" fill="none" stroke="url(#arcGold)" stroke-width="1"/>
+        <ellipse cx="300" cy="-20" rx="240" ry="220" fill="none" stroke="url(#arcGold)" stroke-width="0.5" opacity="0.5"/>
+        <ellipse cx="300" cy="-20" rx="160" ry="140" fill="none" stroke="url(#arcGold)" stroke-width="0.5" opacity="0.6"/>
+        <!-- corner sparkles -->
+        <g fill="rgba(255,220,150,0.7)">
+          <polygon points="40,20 43,30 53,30 45,36 48,46 40,40 32,46 35,36 27,30 37,30" transform="scale(0.6)"/>
+          <polygon points="560,20 563,30 573,30 565,36 568,46 560,40 552,46 555,36 547,30 557,30" transform="scale(0.6) translate(-380,0)"/>
+        </g>
+      </svg>
+
+      <!-- Big decorative rose SVG -->
+      <svg class="hero-rose" width="140" height="140" viewBox="0 0 140 140">
+        <defs>
+          <radialGradient id="rg1" cx="45%" cy="40%">
+            <stop offset="0%" stop-color="#ffb0d0"/>
+            <stop offset="100%" stop-color="#cc2060"/>
+          </radialGradient>
+          <radialGradient id="rg2" cx="50%" cy="45%">
+            <stop offset="0%" stop-color="#ff90b8"/>
+            <stop offset="100%" stop-color="#aa1050"/>
+          </radialGradient>
+          <radialGradient id="rg3" cx="55%" cy="40%">
+            <stop offset="0%" stop-color="#ffc0d8"/>
+            <stop offset="100%" stop-color="#dd3070"/>
+          </radialGradient>
+        </defs>
+        <!-- Leaves -->
+        <ellipse cx="30" cy="95" rx="22" ry="10" fill="#3a8040" opacity="0.85" transform="rotate(-35,30,95)"/>
+        <ellipse cx="110" cy="95" rx="22" ry="10" fill="#2e6e34" opacity="0.85" transform="rotate(35,110,95)"/>
+        <ellipse cx="56" cy="108" rx="18" ry="8" fill="#4a9050" opacity="0.7" transform="rotate(-20,56,108)"/>
+        <ellipse cx="84" cy="108" rx="18" ry="8" fill="#3a7040" opacity="0.7" transform="rotate(20,84,108)"/>
+        <!-- Stem -->
+        <path d="M70 105 Q65 118 62 132" stroke="#2e6e34" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <!-- Outer petals -->
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg1)" transform="rotate(0,70,58)" opacity="0.9"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg1)" transform="rotate(45,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg2)" transform="rotate(90,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg1)" transform="rotate(135,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg2)" transform="rotate(180,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg1)" transform="rotate(225,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg2)" transform="rotate(270,70,70)" opacity="0.85"/>
+        <ellipse cx="70" cy="58" rx="18" ry="28" fill="url(#rg3)" transform="rotate(315,70,70)" opacity="0.85"/>
+        <!-- Middle petals -->
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg2)" transform="rotate(22,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg1)" transform="rotate(67,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg2)" transform="rotate(112,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg3)" transform="rotate(157,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg1)" transform="rotate(202,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg2)" transform="rotate(247,70,70)" opacity="0.95"/>
+        <ellipse cx="70" cy="62" rx="13" ry="20" fill="url(#rg3)" transform="rotate(292,70,70)" opacity="0.95"/>
+        <!-- Inner core -->
+        <circle cx="70" cy="70" r="14" fill="#880030"/>
+        <circle cx="70" cy="70" r="10" fill="#aa1045"/>
+        <circle cx="70" cy="70" r="6"  fill="#cc2060"/>
+        <circle cx="70" cy="70" r="3"  fill="#ffb0c8"/>
+        <!-- Sparkle dots -->
+        <circle cx="52" cy="52" r="2" fill="rgba(255,230,200,0.8)"/>
+        <circle cx="88" cy="50" r="1.5" fill="rgba(255,230,200,0.7)"/>
+        <circle cx="50" cy="84" r="1.5" fill="rgba(255,230,200,0.6)"/>
+      </svg>
+
+      <div class="hero-subtitle">✦ A celebration of love ✦</div>
+      <div class="hero-title">Happy Mother's Day</div>
+    </div>
+
+    <!-- Wave separator -->
+    <svg class="wave-sep" viewBox="0 0 600 50" preserveAspectRatio="none" height="50">
+      <path d="M0,0 C100,50 200,0 300,30 C400,55 500,10 600,0 L600,50 L0,50 Z" fill="#fff9f5"/>
+    </svg>
+
+    <!-- ===== BODY ===== -->
+    <div class="card-body">
+
+      <div class="date-badge">
+        <div class="date-line"></div>
+        <div class="date-text">✦ May 2026 ✦</div>
+        <div class="date-line"></div>
+      </div>
+
+      <!-- Message -->
+      <div class="message-box">
+        <div class="message-title">To the Most Beautiful Soul<br>I've Ever Known</div>
+        <p class="message-text">
+          You carried me before I could walk,<br>
+          guided me before I could speak,<br>
+          and loved me long before I knew<br>
+          what love truly meant.<br><br>
+          In every quiet moment, in every sacrifice,<br>
+          in every smile you gave when you were tired —<br>
+          <strong style="color:#8a1a3a; font-weight:400;">I saw the universe choosing me.</strong>
+        </p>
+      </div>
+
+      <!-- Qualities strip -->
+      <div class="qualities">
+        <div class="quality-item">
+          <span class="quality-emoji">🌹</span>
+          <span class="quality-label">Loving</span>
+        </div>
+        <div class="quality-item">
+          <span class="quality-emoji">🦋</span>
+          <span class="quality-label">Graceful</span>
+        </div>
+        <div class="quality-item">
+          <span class="quality-emoji">✨</span>
+          <span class="quality-label">Radiant</span>
+        </div>
+        <div class="quality-item">
+          <span class="quality-emoji">🌿</span>
+          <span class="quality-label">Gentle</span>
+        </div>
+        <div class="quality-item">
+          <span class="quality-emoji">💛</span>
+          <span class="quality-label">Warm</span>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote-section">
+        <p class="quote-text">
+          "A mother is she who can take the place<br>
+          of all others, but whose place<br>
+          no one else can take."
+        </p>
+        <div class="quote-author">— Cardinal Mermillod</div>
+      </div>
+
+      <!-- Two deco cards -->
+      <div class="deco-frame">
+        <div class="deco-card rose-card">
+          <span class="deco-card-icon">🌸</span>
+          <div class="deco-card-title">Forever My Hero</div>
+          <div class="deco-card-sub">Thank you for everything</div>
+        </div>
+        <div class="deco-card gold-card">
+          <span class="deco-card-icon">👑</span>
+          <div class="deco-card-title">Queen of Hearts</div>
+          <div class="deco-card-sub">Today is all about you</div>
+        </div>
+      </div>
+
+      <!-- Small flower garland -->
+      <div class="garland">
+        <svg width="32" height="48" viewBox="0 0 32 48">
+          <line x1="16" y1="48" x2="16" y2="22" stroke="#6a9e6a" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="9" cy="34" rx="7" ry="3" fill="#8abe8a" opacity="0.7" transform="rotate(-30,9,34)"/>
+          <circle cx="16" cy="14" r="7" fill="#f090b8"/>
+          <circle cx="16" cy="5"  r="4.5" fill="#fac0d8"/>
+          <circle cx="8"  cy="12" r="4.5" fill="#fac0d8"/>
+          <circle cx="24" cy="12" r="4.5" fill="#fac0d8"/>
+          <circle cx="10" cy="21" r="4.5" fill="#f090b8"/>
+          <circle cx="22" cy="21" r="4.5" fill="#f090b8"/>
+          <circle cx="16" cy="14" r="3.5" fill="#fae060"/>
+        </svg>
+        <svg width="28" height="55" viewBox="0 0 28 55">
+          <line x1="14" y1="55" x2="14" y2="26" stroke="#5a8e5a" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="8" cy="40" rx="6" ry="3" fill="#8abe8a" opacity="0.65" transform="rotate(-25,8,40)"/>
+          <circle cx="14" cy="16" r="8" fill="#e05090"/>
+          <circle cx="14" cy="5"  r="5" fill="#f5a8cc"/>
+          <circle cx="5"  cy="14" r="5" fill="#f5a8cc"/>
+          <circle cx="23" cy="14" r="5" fill="#f5a8cc"/>
+          <circle cx="7"  cy="24" r="5" fill="#e05090"/>
+          <circle cx="21" cy="24" r="5" fill="#e05090"/>
+          <circle cx="14" cy="16" r="4" fill="#fbd060"/>
+        </svg>
+        <svg width="36" height="65" viewBox="0 0 36 65">
+          <line x1="18" y1="65" x2="18" y2="30" stroke="#4a7e4a" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="10" cy="48" rx="8" ry="3.5" fill="#7ab07a" opacity="0.7" transform="rotate(-28,10,48)"/>
+          <ellipse cx="26" cy="46" rx="8" ry="3.5" fill="#6aa06a" opacity="0.65" transform="rotate(28,26,46)"/>
+          <circle cx="18" cy="18" r="10" fill="#d03880"/>
+          <circle cx="18" cy="5"  r="6.5" fill="#f098c8"/>
+          <circle cx="5"  cy="15" r="6.5" fill="#f098c8"/>
+          <circle cx="31" cy="15" r="6.5" fill="#f098c8"/>
+          <circle cx="9"  cy="27" r="6.5" fill="#d03880"/>
+          <circle cx="27" cy="27" r="6.5" fill="#d03880"/>
+          <circle cx="18" cy="18" r="5" fill="#f9d050"/>
+        </svg>
+        <svg width="28" height="52" viewBox="0 0 28 52">
+          <line x1="14" y1="52" x2="14" y2="24" stroke="#5a8e5a" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="20" cy="38" rx="6" ry="3" fill="#8abe8a" opacity="0.65" transform="rotate(25,20,38)"/>
+          <circle cx="14" cy="14" r="8" fill="#e870a8"/>
+          <circle cx="14" cy="3"  r="5" fill="#f8b0d0"/>
+          <circle cx="4"  cy="12" r="5" fill="#f8b0d0"/>
+          <circle cx="24" cy="12" r="5" fill="#f8b0d0"/>
+          <circle cx="6"  cy="22" r="5" fill="#e870a8"/>
+          <circle cx="22" cy="22" r="5" fill="#e870a8"/>
+          <circle cx="14" cy="14" r="4" fill="#fbe060"/>
+        </svg>
+        <svg width="32" height="46" viewBox="0 0 32 46">
+          <line x1="16" y1="46" x2="16" y2="20" stroke="#6a9e6a" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="23" cy="32" rx="7" ry="3" fill="#8abe8a" opacity="0.7" transform="rotate(30,23,32)"/>
+          <circle cx="16" cy="12" r="7" fill="#f080b0"/>
+          <circle cx="16" cy="3"  r="4.5" fill="#fbbad8"/>
+          <circle cx="7"  cy="10" r="4.5" fill="#fbbad8"/>
+          <circle cx="25" cy="10" r="4.5" fill="#fbbad8"/>
+          <circle cx="9"  cy="19" r="4.5" fill="#f080b0"/>
+          <circle cx="23" cy="19" r="4.5" fill="#f080b0"/>
+          <circle cx="16" cy="12" r="3.5" fill="#fae060"/>
+        </svg>
+      </div>
+
+      <!-- Signature -->
+      <div class="signature">
+        <div class="sig-love">with all the love in the world</div>
+        <div class="sig-script">Your child, forever 💕</div>
+        <div class="sig-hearts">❤️ 🌸 ❤️</div>
+      </div>
+
+    </div>
+
+    <!-- Ribbon footer -->
+    <div class="footer-ribbon"></div>
+
+  </div>
+</div>
+
+<script>
+// Stars
+const sf = document.getElementById('starfield');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = 1 + Math.random() * 2.5;
+  s.style.cssText = `
+    left:${Math.random()*100}%;top:${Math.random()*100}%;
+    width:${sz}px;height:${sz}px;
+    animation-duration:${2+Math.random()*4}s;
+    animation-delay:${Math.random()*5}s;
+  `;
+  sf.appendChild(s);
+}
+
+// Petals
+const pc = document.getElementById('petals-container');
+const petalShapes = [
+  'M10,0 Q18,4 16,12 Q14,20 8,22 Q2,20 0,12 Q-2,4 6,0 Z',
+  'M8,0 C14,2 18,8 16,14 C14,20 6,22 2,18 C-2,14 0,4 8,0 Z',
+  'M12,0 Q20,6 18,14 Q16,22 8,24 Q0,22 0,14 Q-2,6 8,0 Z'
+];
+const petalColors = ['#f7b8c8','#f5c8dc','#fde0ee','#e8a0c0','#ffc0d4','#ffaac8'];
+
+for (let i = 0; i < 35; i++) {
+  const el = document.createElement('div');
+  el.className = 'petal';
+  const size = 10 + Math.random() * 16;
+  const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+  el.style.cssText = `
+    left:${Math.random()*100}%;
+    width:${size}px; height:${size}px;
+    background:${color};
+    border-radius:${50+Math.floor(Math.random()*30)}% ${30+Math.floor(Math.random()*30)}% ${50+Math.floor(Math.random()*20)}% ${30+Math.floor(Math.random()*20)}% / ${50+Math.floor(Math.random()*20)}% ${40+Math.floor(Math.random()*20)}% ${40+Math.floor(Math.random()*20)}% ${50+Math.floor(Math.random()*20)}%;
+    animation-duration:${7+Math.random()*9}s;
+    animation-delay:${Math.random()*10}s;
+    opacity:0;
+  `;
+  pc.appendChild(el);
+}
+</script>
+</body>
+</html>
